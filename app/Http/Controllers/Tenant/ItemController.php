@@ -143,7 +143,7 @@ class ItemController extends Controller
     public function record($id)
     {
         $record = new ItemResource(Item::findOrFail($id));
-
+        
         return $record;
     }
 

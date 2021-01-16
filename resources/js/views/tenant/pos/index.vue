@@ -257,6 +257,7 @@
                                             ({{ item.unit_type_id }})
                                             {{ item.currency_type_symbol }}
                                             {{ item.sale_unit_price }}
+                                            (Min: {{ item.sale_minimun_unit_price }})
                                         </h5>
                                     </template>
                                     <template v-else>
@@ -1807,6 +1808,7 @@ export default {
                     .get(`/${this.resource}/search_items_cat?${parameters}`)
                     .then(response => {
                         if (response.data.data.length > 0) {
+                            console.log('cat', response.data)
                             this.all_items = response.data.data;
                             this.filterItems();
                             this.pagination = response.data.meta;
@@ -1866,6 +1868,7 @@ export default {
             this.input_item = null;
         },
         filterItems() {
+            console.log('items', this.all_items)
             this.items = this.all_items;
         },
         reloadDataCustomers(customer_id) {

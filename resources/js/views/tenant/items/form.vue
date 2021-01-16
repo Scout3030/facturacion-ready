@@ -77,7 +77,14 @@
                             <small class="form-control-feedback" v-if="errors.sale_unit_price" v-text="errors.sale_unit_price[0]"></small>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
+                        <div class="form-group" :class="{'has-danger': errors.sale_minimun_unit_price}">
+                            <label class="control-label">P. Venta (Mín) <span class="text-danger">*</span></label>
+                            <el-input v-model="form.sale_minimun_unit_price" dusk="sale_minimun_unit_price"></el-input>
+                            <small class="form-control-feedback" v-if="errors.sale_minimun_unit_price" v-text="errors.sale_minimun_unit_price[0]"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group" :class="{'has-danger': errors.sale_affectation_igv_type_id}">
                             <label class="control-label">Tipo de afectación (Venta)</label>
                             <el-select v-model="form.sale_affectation_igv_type_id" @change="changeAffectationIgvType">
@@ -735,6 +742,7 @@
                     unit_type_id: 'NIU',
                     currency_type_id: 'PEN',
                     sale_unit_price: 0,
+                    sale_minimun_unit_price: 0,
                     purchase_unit_price: 0,
                     has_isc: false,
                     system_isc_type_id: null,
