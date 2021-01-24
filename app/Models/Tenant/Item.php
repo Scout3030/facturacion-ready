@@ -213,7 +213,10 @@ class Item extends ModelTenant
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class)->withDefault([
+            'id' => '',
+            'name' => ''
+        ]);
     }
 
     public function category()
@@ -240,7 +243,6 @@ class Item extends ModelTenant
     {
         return $this->hasMany(ItemLotsGroup::class, 'item_id');
     }
-
 
     public function scopeWhereNotService($query)
     {
