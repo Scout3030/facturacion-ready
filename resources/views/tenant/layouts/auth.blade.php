@@ -34,7 +34,7 @@
             }
         </style>
     @endif
-
+    @laravelPWA  
 </head>
 
 <body>

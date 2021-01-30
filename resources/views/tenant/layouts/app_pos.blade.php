@@ -67,7 +67,7 @@
 
 
     </style>
-
+    @laravelPWA
 </head>
 <body class="pr-0">
     <section class="body">
