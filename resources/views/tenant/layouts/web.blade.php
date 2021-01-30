@@ -73,6 +73,7 @@
             margin: 0;
         }
     </style>
+    @laravelPWA
 </head>
 <body class="body-web">
 <div id="main-wrapper">

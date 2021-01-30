@@ -26,6 +26,7 @@
     
     <!-- Fontawesome -->
     <link rel="stylesheet" href="{{ asset('porto-ecommerce/assets/font-awesome/css/fontawesome-all.min.css') }}">
+    @laravelPWA
 </head>
 <body>
     <div class="page-wrapper">

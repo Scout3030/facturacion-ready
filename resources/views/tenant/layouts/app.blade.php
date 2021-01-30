@@ -108,7 +108,7 @@
     </style>
 
     <script defer src="{{ asset('js/app.js') }}"></script>
-
+    @laravelPWA
 </head>
 <body class="pr-0">
 

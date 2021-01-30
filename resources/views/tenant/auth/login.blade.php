@@ -31,7 +31,7 @@
 
         <link rel="stylesheet" type="text/css" href="{{asset('new-auth/css/util.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('new-auth/css/main.css')}}">
-
+        @laravelPWA
     </head>
     <body>
         <div class="limiter">

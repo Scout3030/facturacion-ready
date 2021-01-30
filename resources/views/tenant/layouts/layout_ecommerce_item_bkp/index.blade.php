@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('porto-ecommerce/assets/css/style.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('porto-ecommerce/assets/css/rating.css') }}">
-
+    @laravelPWA
 </head>
 <body>
     <div class="page-wrapper">
