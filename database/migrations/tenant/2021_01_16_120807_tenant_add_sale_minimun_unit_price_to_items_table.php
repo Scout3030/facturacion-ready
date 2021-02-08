@@ -14,7 +14,7 @@ class TenantAddSaleMinimunUnitPriceToItemsTable extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->decimal('sale_minimun_unit_price', 12, 2)->after('sale_unit_price');
+            $table->decimal('sale_minimun_unit_price', 12, 2)->default(0)->after('sale_unit_price');
         });
     }
 
