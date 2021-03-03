@@ -545,7 +545,10 @@ if ($hostname) {
     });
 } else {
     Route::domain(env('APP_URL_BASE'))->group(function() {
-
+        Route::view('/', 'home.index')->name('home.index');
+        Route::view('/mercados', 'home.mercados')->name('home.mercados');
+        Route::view('/escritorio', 'home.escritorio')->name('home.escritorio');
+        Route::view('/whatsapp', 'home.whatsapp')->name('home.whatsapp');
         Route::get('login', 'System\LoginController@showLoginForm')->name('login');
         Route::post('login', 'System\LoginController@login');
         Route::post('logout', 'System\LoginController@logout')->name('logout');
@@ -553,9 +556,9 @@ if ($hostname) {
 
         Route::middleware('auth:admin')->group(function() {
             Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-            Route::get('/', function () {
-                return redirect()->route('system.dashboard');
-            });
+            // Route::get('/', function () {
+            //     return redirect()->route('system.dashboard');
+            // });
             Route::get('dashboard', 'System\HomeController@index')->name('system.dashboard');
 
             //Clients

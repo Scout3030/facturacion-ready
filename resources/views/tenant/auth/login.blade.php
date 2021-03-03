@@ -42,13 +42,13 @@
                         <h3 class="text-center">Sistema de Facturación e Inventario</h3>
                       </div>
                       <div class="login100-pic js-tilt text-center" data-tilt="">
-                          <img src="{{asset('new-auth/images/img-01.png')}}" alt="IMG">
+                          <img src="{{asset('new-auth/images/jm.png')}}" alt="IMG">
                       </div>
                       <div class="flex-c-m pt-3">
-                        <a href="https://www.facebook.com/HuamachucoDigital" target="_BLANK" class="login100-social-item bg1">
+                        <a href="https://www.facebook.com/jmsolucionesdigitales" target="_BLANK" class="login100-social-item bg1">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a href="https://wa.me/51921579526" target="_BLANK" class="login100-social-item bg2">
+                        <a href="https://api.whatsapp.com/send?phone=51993229053" target="_BLANK" class="login100-social-item bg2">
                             <i class="fa fa-whatsapp"></i>
                         </a>
                       </div>
@@ -89,7 +89,7 @@
                             </button>
                         </div>
                         <div class="text-center p-t-136">
-                            <a class="txt2" href="https://wa.me/51921579526" target="_BLANK">
+                            <a class="txt2" href="https://api.whatsapp.com/send?phone=51993229053" target="_BLANK">
                                 Solicita tu afiliación
                                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                             </a>
