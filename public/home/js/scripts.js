@@ -164,33 +164,11 @@
             rsubmitMSG(false, "Por favor rellena todos los campos!");
         } else {
             // everything looks good!
-            event.preventDefault();
-            rsubmitForm();
+            // event.preventDefault();
+            // rsubmitForm();
+            console.log('submit...')
         }
     });
-
-    function rsubmitForm() {
-        // initiate variables with form content
-		var name = $("#rname").val();
-		var email = $("#remail").val();
-		var phone = $("#rphone").val();
-        var select = $("#rselect").val();
-        var terms = $("#rterms").val();
-        
-        $.ajax({
-            type: "POST",
-            url: "php/requestform-process.php",
-            data: "name=" + name + "&email=" + email + "&phone=" + phone + "&select=" + select + "&terms=" + terms, 
-            success: function(text) {
-                if (text == "success") {
-                    rformSuccess();
-                } else {
-                    rformError();
-                    rsubmitMSG(false, text);
-                }
-            }
-        });
-	}
 
     function rformSuccess() {
         $("#requestForm")[0].reset();

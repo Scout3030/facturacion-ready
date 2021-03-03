@@ -546,6 +546,7 @@ if ($hostname) {
 } else {
     Route::domain(env('APP_URL_BASE'))->group(function() {
         Route::view('/', 'home.index')->name('home.index');
+        Route::post('/', 'HomeController@sendData')->name('home.send-data');
         Route::view('/mercados', 'home.mercados')->name('home.mercados');
         Route::view('/escritorio', 'home.escritorio')->name('home.escritorio');
         Route::view('/whatsapp', 'home.whatsapp')->name('home.whatsapp');

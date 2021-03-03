@@ -694,7 +694,7 @@
                                 <li class="media">
                                     <i class="fas fa-check"></i>
                                     <div class="media-body">
-                                        <strong class="blue">TECNOLOGíA VANGUARDISTA</strong>
+                                        <strong class="blue">TECNOLOGÍA VANGUARDISTA</strong>
                                     </div>
                                 </li>
                                 <li class="media">
@@ -712,7 +712,8 @@
 
                         <!-- Request Form -->
                         <div class="form-container">
-                            <form id="requestForm" data-toggle="validator" data-focus="false">
+                            <form id="requestForm" data-toggle="validator" data-focus="false" action="{{ route('home.send-data') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <input
                                         type="text"
@@ -744,11 +745,11 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control-select" id="rselect" required="required">
+                                    <select class="form-control-select" name="rselect" id="rselect" required="required">
                                         <option class="select-option" value="" disabled="disabled" selected="selected">Plan a elegir...</option>
-                                        <option class="select-option" value="Personal Loan">Facturador</option>
-                                        <option class="select-option" value="Car Loan">Plus</option>
-                                        <option class="select-option" value="House Loan">Premium</option>
+                                        <option class="select-option" value="Facturador">Facturador</option>
+                                        <option class="select-option" value="Plus">Plus</option>
+                                        <option class="select-option" value="Premium">Premium</option>
                                     </select>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -779,7 +780,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Informacion de Contacto</h2>
+                        <h2>Información de Contacto</h2>
                         <ul class="list-unstyled li-space-lg">
                             <li class="address">No dude en llamarnos o enviarnos un mensaje
                             </li>
