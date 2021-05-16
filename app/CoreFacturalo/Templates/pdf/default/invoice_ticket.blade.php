@@ -4,7 +4,7 @@
     $invoice = $document->invoice;
     //$path_style = app_path('CoreFacturalo'.DIRECTORY_SEPARATOR.'Templates'.DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.'style.css');
     $document_number = $document->series.'-'.str_pad($document->number, 8, '0', STR_PAD_LEFT);
-    $accounts = \App\Models\Tenant\BankAccount::all();
+    $accounts = \App\Models\Tenant\BankAccount::where('show_in_documents', true)->get();
     $document_base = ($document->note) ? $document->note : null;
     $payments = $document->payments;
 
@@ -478,22 +478,23 @@
                     @if ($loop->first)
                         <strong>Información adicional</strong>
                     @endif
-                    <p>{{ $information }}</p>
+                    <p class="desc">{{ $information }}</p>
                 @endif
             @endforeach
             <br>
             @if(in_array($document->document_type->id,['01','03']))
                 @foreach($accounts as $account)
-                    <p>
-                    <span class="font-bold">{{$account->bank->description}}</span> {{$account->currency_type->description}}
-                    <span class="font-bold">N°:</span> {{$account->number}}
-                    @if($account->cci)
-                    <span class="font-bold">CCI:</span> {{$account->cci}}
-                    @endif
+                    <p class="desc">
+                        <small>
+                            <span class="font-bold desc">{{$account->bank->description}}</span> {{$account->currency_type->description}}
+                            <span class="font-bold desc">N°:</span> {{$account->number}}
+                            @if($account->cci)
+                            <span class="font-bold desc">CCI:</span> {{$account->cci}}
+                            @endif
+                        </small>
                     </p>
                 @endforeach
             @endif
-
         </td>
     </tr>
     <tr>
@@ -536,11 +537,16 @@
     @endif
 
     <tr>
-        <td class="desc pt-2">
-        <strong>Vendedor:</strong> </td>
+        <td class="desc">
+            <strong>Vendedor:</strong>
+        </td>
     </tr>
     <tr>
-        <td class="desc">{{ $document->user->name }}</td>
+        @if ($document->seller)
+            <td class="desc">{{ $document->seller->name }}</td>
+        @else
+            <td class="desc">{{ $document->user->name }}</td>
+        @endif
     </tr>
 
     @if ($document->terms_condition)

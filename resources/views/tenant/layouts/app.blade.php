@@ -108,7 +108,12 @@
     </style>
 
     <script defer src="{{ asset('js/app.js') }}"></script>
+    
     @laravelPWA
+
+    @if ($vc_company->favicon)
+    <link rel="shortcut icon" type="image/png" href="{{ asset($vc_company->favicon) }}"/>
+    @endif
 </head>
 <body class="pr-0">
 
@@ -124,6 +129,8 @@
               @yield('content')
               @include('tenant.layouts.partials.sidebar_styles')
             </section>
+
+            @yield('package-contents')
         </div>
     </section>
     @if($show_ws)

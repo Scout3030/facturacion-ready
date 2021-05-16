@@ -6,7 +6,7 @@
 
     //$path_style = app_path('CoreFacturalo'.DIRECTORY_SEPARATOR.'Templates'.DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.'style.css');
     $document_number = $document->series.'-'.str_pad($document->number, 8, '0', STR_PAD_LEFT);
-    $accounts = \App\Models\Tenant\BankAccount::all();
+    $accounts = \App\Models\Tenant\BankAccount::where('show_in_documents', true)->get();
 
     if($document_base) {
 
@@ -640,23 +640,22 @@
     </table>
 @endif
 
-@if($document->user)
-     <br>
-    <table class="full-width">
-        <tr>
-            <td>
-                <strong>Vendedor:</strong>
-            </td>
-        </tr>
+<br>
+<table class="full-width">
+    <tr>
+        <td>
+            <strong>Vendedor:</strong>
+        </td>
+    </tr>
+    <tr>
+        @if ($document->seller)
+            <td>{{ $document->seller->name }}</td>
+        @else
+            <td>{{ $document->user->name }}</td>
+        @endif
+    </tr>
+</table>
 
-                <tr>
-                    <td>{{ $document->user->name }}</td>
-                </tr>
-
-        </tr>
-
-    </table>
-@endif
 @if ($document->terms_condition)
     <br>
     <table class="full-width">
