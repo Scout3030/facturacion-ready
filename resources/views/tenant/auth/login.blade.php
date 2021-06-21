@@ -1,116 +1,62 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Sistema de Facturación en inventario</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('tenant.layouts.auth')
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <link rel="icon" type="image/png" href="{{asset('new-auth/images/icons/invoice.png')}}">
-
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{{asset('new-auth/vendor/bootstrap/css/bootstrap.min.css')}}">
-
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{{asset('new-auth/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-
-        <link rel="stylesheet" type="text/css" href="{{asset('new-auth/vendor/animate/animate.css')}}">
-
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{{asset('new-auth/vendor/css-hamburgers/hamburgers.min.css')}}">
-
-        <link rel="stylesheet" type="text/css" href="{{asset('new-auth/vendor/select2/select2.min.css')}}">
-
-        <link rel="stylesheet" type="text/css" href="{{asset('new-auth/css/util.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('new-auth/css/main.css')}}">
-        @laravelPWA
-    </head>
-    <body>
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100">
-                    <div class="d-none d-md-block col-6 ">
-                      <div class="title pb-5">
-                        <h3 class="text-center">Sistema de Facturación e Inventario</h3>
-                      </div>
-                      <div class="login100-pic js-tilt text-center" data-tilt="">
-                          <img src="{{asset('new-auth/images/img-01.png')}}" alt="IMG">
-                      </div>
-                      <div class="flex-c-m pt-3">
-                        <a href="https://www.facebook.com/HuamachucoDigital" target="_BLANK" class="login100-social-item bg1">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="https://wa.me/51921579526" target="_BLANK" class="login100-social-item bg2">
-                            <i class="fa fa-whatsapp"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <form class="login100-form" method="POST" action="{{ route('login') }}">
+@section('content')
+    <section class="body-sign">
+        <div class="center-sign">
+            <div class="card">
+                <div class="card card-header card-primary" style="background:#0088CC">
+                    <p class="card-title text-center">Acceso al Sistema</p>
+                    <h1 class="display-3 position-absolute text-left font-weight-bold" style="left: 90%; margin-top: -35px; color: rgba(255,255,255,.1);">3</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <span class="login100-form-title">
-                            Inicia sesión
-                        </span>
-                        <div
-                            class="wrap-input100 validate-input">
-                            <input class="input100" type="text" name="email" placeholder="Correo electrónico" value="{{ old('email') }}">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
+                        <div class="form-group mb-3">
+                            <label>Correo electrónico</label>
+                            <div class="input-group">
+                                <input id="email" type="email" name="email" class="form-control form-control-lg" value="{{ old('email') }}">
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            @if ($errors->has('email'))
+                                <label class="error">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </label>
+                            @endif
                         </div>
-                        <div class="wrap-input100 validate-input">
-                            <input class="input100" type="password" name="password" placeholder="Contraseña">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
+                        <div class="form-group mb-3 {{ $errors->has('password') ? ' error' : '' }}">
+                            <label>Contraseña</label>
+                            <div class="input-group">
+                                <input name="password" type="password" class="form-control form-control-lg">
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            @if ($errors->has('password'))
+                                <label class="error">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </label>
+                            @endif
                         </div>
-                        @if ($errors->has('email'))
-                            <label class="error">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </label>
-                        @endif
-                        @if ($errors->has('password'))
-                            <label class="error">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </label>
-                        @endif
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Ingresa
-                            </button>
-                        </div>
-                        <div class="text-center p-t-136">
-                            <a class="txt2" href="https://wa.me/51921579526" target="_BLANK">
-                                Solicita tu afiliación
-                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="checkbox-custom checkbox-default">
+                                    <input name="remember" id="RememberMe" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="RememberMe">Recordarme</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <button type="submit" class="btn btn-primary mt-2">Iniciar sesión</button>
+                            </div>
                         </div>
                     </form>
                 </div>
-            </div>
+            {{-- <p class="text-center text-muted mt-3 mb-3">&copy; Copyright {{ date('Y') }}. Todos los derechos reservados</p> --}}
         </div>
-
-        <script src="{{asset('new-auth/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-
-        <script src="{{asset('new-auth/vendor/bootstrap/js/popper.js')}}"></script>
-        <script src="{{asset('new-auth/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
-        <script src="{{asset('new-auth/vendor/select2/select2.min.js')}}"></script>
-
-        <script src="{{asset('new-auth/vendor/tilt/tilt.jquery.min.js')}}"></script>
-        <script>
-            $('.js-tilt').tilt({scale: 1.1})
-        </script>
-
-        <script src="{{asset('new-auth/js/main.js')}}"></script>
-    </body>
-</html>
+    </section>
+@endsection
