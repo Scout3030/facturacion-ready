@@ -21,4 +21,8 @@ class Woocommerce extends ModelTenant
         'sync_orders',
         'sync_customers'
     ];
+
+    protected $casts = [
+        'options' => 'array'
+    ];
 }

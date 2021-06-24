@@ -19,45 +19,16 @@ class WoocommerceService
             $woocommerce->woocommerce_app_url,
             $woocommerce->woocommerce_consumer_key,
             $woocommerce->woocommerce_consumer_secret,
-            [
-                'wp_api' => true,
-                'version' => 'wc/v2',
-                'timeout' => 10000,
-                'verify_ssl' => false
-            ]
+            $woocommerce->options
         );
-    }
-
-    /**
-     * @param $productId
-     * @param $qty
-     * @return array
-     */
-    public function updateStock($productId, $qty){
-        $data = [
-            "stock_quantity" => $qty
-        ];
-        return $this->woocommerce->put("products/{$productId}", $data);
-    }
-
-    /**
-     * @param $name
-     * @param $categoryId
-     * @return array
-     */
-    public function createCategory($name, $categoryId){
-        $data = [
-            "name" => $name,
-            "parent" => $categoryId
-        ];
-        return $this->woocommerce->post("products/categories", $data);
     }
 
     /**
      * @param $data
      * @return array
      */
-    public function createProduct($data){
+    public function createProduct($data): array
+    {
         return $this->woocommerce->post("products", $data);
     }
 
@@ -66,7 +37,22 @@ class WoocommerceService
      * @param $data
      * @return array
      */
-    public function updateProduct($productId, $data){
+    public function updateProduct($productId, $data): array
+    {
         return $this->woocommerce->put("products/{$productId}", $data);
+    }
+
+    /**
+     * @param $name
+     * @param $categoryId
+     * @return array
+     */
+    public function createCategory($name, $categoryId): array
+    {
+        $data = [
+            "name" => $name,
+            "parent" => $categoryId
+        ];
+        return $this->woocommerce->post("products/categories", $data);
     }
 }

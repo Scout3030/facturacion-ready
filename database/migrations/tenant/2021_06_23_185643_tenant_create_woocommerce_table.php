@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tenant\Woocommerce;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -27,12 +28,15 @@ class TenantCreateWoocommerceTable extends Migration
             $table->boolean('sync_customers')->default(true);
         });
 
-        DB::table('woocommerce')->insert([
-            [
-                'id' => 1,
-                'url' => 'https://mywoocommerce.com',
-                'consumer_key' => 'woocommerce-consumer-key',
-                'consumer_secret' => 'woocommerce-consumer-secret'
+        Woocommerce::create([
+            'url' => 'https://mywoocommerce.com',
+            'consumer_key' => 'woocommerce-consumer-key',
+            'consumer_secret' => 'woocommerce-consumer-secret',
+            'options' => [
+                'wp_api' => true,
+                'version' => 'wc/v2',
+                'timeout' => 10000,
+                'verify_ssl' => false
             ],
         ]);
     }
