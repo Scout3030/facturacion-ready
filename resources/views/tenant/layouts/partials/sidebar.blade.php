@@ -970,6 +970,17 @@
 {{--                            </li>--}}
 {{--                        </ul>--}}
 {{--                    </li>--}}
+
+{{--                    @if(in_array('woocommerce', $vc_modules))--}}
+                        <li class="{{ ($path[0] === 'woocommerce')?'nav-active':'' }}">
+                            <a class="nav-link" href="{{ route('tenant.woocommerce.index') }}">
+                                <span class="float-right badge badge-red badge-danger mr-3">Nuevo</span>
+                                <i class="fas fa-wordpress" aria-hidden="true"></i>
+                                <span>Woocommerce</span>
+                            </a>
+                        </li>
+{{--                    @endif--}}
+
                 </ul>
             </nav>
         </div>

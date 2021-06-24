@@ -28,3 +28,6 @@ docker-compose.yml
 composer.lock
 /ssh
 /.project
+development.sh
+/public/js/*
+/public/css/*

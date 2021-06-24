@@ -11,9 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/style.scss', 'public/css/app.css')
-   .extract(['vue', 'element-ui', 'element-ui/lib/locale/lang/es', 'element-ui/lib/locale']);
+mix.js('resources/js/app.js', 'public/js');
+   // .sass('resources/sass/style.scss', 'public/css/app.css')
+   // .extract(['vue', 'element-ui', 'element-ui/lib/locale/lang/es', 'element-ui/lib/locale']);
 
 mix.webpackConfig({
     resolve: {

@@ -4,8 +4,12 @@ namespace App\Models\Tenant;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Woocommerce extends Model
+class Woocommerce extends ModelTenant
 {
+    public $timestamps = false;
+
+    protected $table = 'woocommerce';
+
     protected $fillable = [
         'url',
         'consumer_key',
@@ -15,6 +19,6 @@ class Woocommerce extends Model
         'sync_categories',
         'sync_tags',
         'sync_orders',
-        'sync_clients'
+        'sync_customers'
     ];
 }

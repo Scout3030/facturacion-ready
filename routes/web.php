@@ -528,6 +528,13 @@ if ($hostname) {
 
 			//formats PDF
 			Route::get('templates', 'Tenant\FormatTemplateController@records');
+
+            Route::group(['prefix' => 'woocommerce'], function () {
+                Route::get('/', 'Tenant\WoocommerceController@index')->name('tenant.woocommerce.index');
+                Route::put('/', 'Tenant\WoocommerceController@update')->name('tenant.woocommerce.update');
+
+                Route::get('/record', 'Tenant\WoocommerceController@record')->name('tenant.woocommerce.record');
+            });
 		});
 	});
 } else {
